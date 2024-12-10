@@ -1,0 +1,130 @@
+public class SistemaBiblioteca{
+    public static void main(String[] args) {
+    Biblioteca biblioteca=new Biblioteca ("Biblioteca rumiñahui 17D11",Calle Principal Venezuela");
+    
+    Libro libro1=new libro ("El extranjero","Albert Camus","isbn-001");
+    Libro libro2=new libro ("La colmena","Camilo Cela", "isbn-002");
+    
+    
+    Biblioteca.registrarLibro (libro1);
+    Biblioteca.regsitrarLibro (libro2);
+    
+    Usuario usuario=new Usuario("Javier Tapia", "user-001")
+    Usuario empleado=new Empleado("Maria Tobar", "emp001", "Bibliotecaria");
+    Transaccion prestamo=new Transaccion("TRANS-001", libro, usuario, Transaccion.TipoTransaccion.Prestamo;
+    Prestamo.registrar Prestamo (biblioteca);
+    
+    Empleado.gestionarUsuarios (usuario, biblioteca);
+    
+    Transaccion devolucion=new Transaccion("TRANS-002", libro, usuario, Transaccion. TipoTransaccion. DEVOLUCION);
+    Devolucion.registrarDevolucion (biblioteca):
+    
+    }
+}
+
+
+public Biblioteca (String nombre, String direccion) (
+   this.nombre nombre:
+   this.direccion direccion;
+   this.catalogo new ArrayList<>();
+}
+public Libro buscarlibro (Sthing titulo) {
+  return catalogo.stream()
+        filter (libro libro.titulo.equalsIgnoreCase (titulo))
+        findFirst()
+        orElse (null);
+}
+
+public void registrarLibro (Libro libro) {
+    if (Icatalogo.contains(libro)) {
+         catalogo.add(libro);
+         System.out.println("Libro registrado: libro.titulo);
+    } else {
+         System.out.println("El libro ya existe en el catálogo.");
+}
+}
+
+ public void eliminarLibro (Libro libro) {
+   if ( catalogo.remove(libro)) {
+        System.out.println("Libro eliminado: libro.titulo);
+    } else {
+      System.out.println("El  no se encuentra en el catalogo.");
+    }
+
+
+
+
+public class Usuario {
+public String nombre:
+public String idUsuario:
+public List<Libro> listalibros Prestados;
+public Usuario (String nombre, String idUsuario) {
+this.nombre nombre:
+this.idUsuario idUsuario;
+this.listaLibros Prestados new ArrayList<>();
+public void solicitarPrestamo (Libro libro) (
+if (libro.verificarDisponibilidad()) {
+libro.prestar();
+listaLibros Prestados.add(libro);
+System.out.println(nombre "ha tomado prestado el libro: libro.titulo):
+} else {
+System.out.println("El libro no está disponible para préstamo.");
+}
+public void devolverLibro (Libro libro) {
+if (listalibrosPrestados.contains(libro)) {
+libro.devolver();
+listaLibros Preatados.remove(libro);
+System.out.println(nombre ha devuelto el libro: libro.titulo);
+}else {
+System.out.println("Este libro no fue prestado por nombre);
+}
+}
+
+
+
+public class Empleado {
+public String nombre;
+public String idEmpleado:
+public Empleado (String nombre, String idEmpleado) {
+this.nombre nombre:
+this.idEmpleado idEmpleado;
+}
+public void gestionarUsuarios (Usuario usuario, Biblioteca biblioteca) {
+// Ejemplo de gestión: imprimir información del usuario
+System.out.println("Gestionando usuario usuario.nombre);
+System.out.println("Libros prestados usuario.listaLibros Prestados.size());
+}
+public void actualizarEstadoLibro (Libro libro, Libro. EstadoLibro nuevoEstado) {
+// Cambiar manualmente el estado de un Libro
+if (nuevoEstado Libro. EstadoLibro. DISPONIBLE) (
+libro.devolver();
+} else {
+libro.prestar();
+}
+
+
+
+
+
+
+public class Transaccion (
+public String idTransaccion:
+public LocalDate fecha:
+public enum TipoTransaccion
+PRESTANO, DEVOLUCION
+}
+public Transaccion (String idTransaccion, Libro libro, Usuario usuario, TipoTransaccion tipo) (
+this.idTransaccion; this.idTransaccion
+this.fecha LocalDate.now();
+}
+public void registrarPrestamo (Biblioteca biblioteca) {
+if (libro.verificarDisponibilidad()) {
+usuario.solicitar Prestamo (libro);
+System.out.println("Préstamo registradot libro.titulo
+""+usuario.nombre
+"["+fecha + "]");
+public void registrarDevolucion (Biblioteca biblioteca) (
+usuario.devolverLibro (libro)
+System.out.println("Devolución registrada: libro.titulo "-"+usuario.nombre "["+fecha "1");
+}
+}
